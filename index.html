@@ -1006,6 +1006,504 @@ main { position: relative; z-index: 1; }
   .checkin-label { width: 90px; }
 }
 
+/* ============================================================
+   SLEEP GATE — first decision of the day
+   ============================================================ */
+.sleep-gate {
+  margin: 18px 0;
+  padding: 22px 22px 20px;
+  background: var(--surface);
+  border: 1px solid var(--border-soft);
+  border-radius: 20px;
+}
+.sleep-gate-q {
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 300;
+  font-size: 22px;
+  line-height: 1.35;
+  color: var(--text);
+  margin: 0 0 6px;
+}
+.sleep-gate-sub {
+  font-family: var(--body);
+  font-size: 12px;
+  color: var(--text-mute);
+  margin-bottom: 18px;
+  line-height: 1.5;
+}
+.sleep-options {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+.sleep-option {
+  padding: 14px 12px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-align: center;
+  -webkit-tap-highlight-color: transparent;
+}
+.sleep-option:hover { border-color: var(--terracotta); }
+.sleep-option-label {
+  font-family: var(--serif);
+  font-size: 15px;
+  color: var(--text);
+  font-weight: 400;
+  margin-bottom: 3px;
+}
+.sleep-option-sub {
+  font-family: var(--body);
+  font-size: 10.5px;
+  color: var(--text-mute);
+  letter-spacing: 0.02em;
+  line-height: 1.35;
+}
+.sleep-option.full { grid-column: span 2; }
+
+/* Sleep status pill (after she's chosen) */
+.sleep-status {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 12px 16px;
+  margin: 14px 0 4px;
+  background: var(--surface);
+  border: 1px solid var(--border-soft);
+  border-left: 3px solid var(--terracotta);
+  border-radius: 14px;
+}
+.sleep-status.rested { border-left-color: var(--sage); }
+.sleep-status.tired-mode { border-left-color: var(--clay); }
+.sleep-status.rest-mode { border-left-color: var(--rose); }
+.sleep-status.off-mode { border-left-color: var(--plum); }
+.sleep-status-text {
+  font-family: var(--body);
+  font-size: 13px;
+  color: var(--text-2);
+  line-height: 1.4;
+}
+.sleep-status-text b {
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 400;
+  font-size: 14px;
+  color: var(--terracotta);
+}
+.sleep-status.rested b { color: var(--sage); }
+.sleep-status.rest-mode b { color: var(--rose); }
+.sleep-status.off-mode b { color: var(--plum); }
+.sleep-status button {
+  font-family: var(--body);
+  font-size: 11px;
+  color: var(--text-mute);
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 5px 10px;
+  cursor: pointer;
+  letter-spacing: 0.02em;
+}
+.sleep-status button:hover { color: var(--terracotta); border-color: var(--terracotta); }
+
+/* ============================================================
+   WORKOUT PRESCRIPTION CARD — duration + activity, based on sleep
+   ============================================================ */
+.workout-prescription {
+  padding: 16px 20px 12px;
+  background: linear-gradient(180deg, var(--sage-soft), transparent);
+  border-bottom: 1px solid var(--border-soft);
+}
+.workout-prescription.rest { background: linear-gradient(180deg, var(--rose-soft), transparent); }
+.workout-prescription.off  { background: linear-gradient(180deg, rgba(154,123,138,0.08), transparent); }
+.wp-label {
+  font-family: var(--body);
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-mute);
+  margin-bottom: 6px;
+}
+.wp-duration {
+  font-family: var(--serif);
+  font-size: 28px;
+  font-weight: 400;
+  color: var(--sage);
+  letter-spacing: -0.01em;
+  line-height: 1;
+}
+.workout-prescription.rest .wp-duration { color: var(--rose); }
+.workout-prescription.off .wp-duration { color: var(--plum); font-style: italic; font-size: 22px; }
+.wp-duration .unit {
+  font-family: var(--body);
+  font-size: 12px;
+  color: var(--text-mute);
+  margin-left: 4px;
+  letter-spacing: 0.06em;
+}
+.wp-guidance {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 14px;
+  color: var(--text-2);
+  margin-top: 8px;
+  line-height: 1.5;
+}
+
+/* ============================================================
+   MEAL CARDS — breakfast/lunch/dinner/snack/treat with calories
+   ============================================================ */
+.meal-item {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 14px 20px;
+  border-top: 1px solid var(--border-soft);
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  transition: background 0.15s ease;
+}
+.meal-item:first-child { border-top: none; }
+.meal-item:hover { background: rgba(193,122,84,0.03); }
+.meal-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+.meal-label {
+  flex-shrink: 0;
+  width: 64px;
+  padding-top: 1px;
+}
+.meal-label-name {
+  font-family: var(--body);
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--terracotta);
+  font-weight: 600;
+}
+.meal-label-cal {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 11px;
+  color: var(--text-mute);
+  margin-top: 2px;
+}
+.meal-pick {
+  flex: 1;
+  min-width: 0;
+}
+.meal-pick-name {
+  font-family: var(--serif);
+  font-size: 16px;
+  color: var(--text);
+  line-height: 1.35;
+}
+.meal-pick-name.placeholder {
+  font-style: italic;
+  color: var(--text-mute);
+  font-size: 14px;
+}
+.meal-pick-note {
+  font-family: var(--body);
+  font-size: 12px;
+  color: var(--text-mute);
+  margin-top: 3px;
+  line-height: 1.45;
+}
+.meal-actions {
+  margin-top: 8px;
+  margin-left: 76px;
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+.meal-action {
+  padding: 7px 11px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  color: var(--text-2);
+  font-family: var(--body);
+  font-size: 11px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+.meal-action:hover { border-color: var(--rose); color: var(--rose); }
+.meal-action.active {
+  background: var(--rose-soft);
+  border-color: var(--rose);
+  color: var(--rose);
+}
+.meal-action.clear { color: var(--text-mute); }
+.meal-action.recipe { color: var(--terracotta); border-color: rgba(193,122,84,0.3); }
+.meal-action.recipe:hover { background: var(--terra-soft); }
+
+/* ============================================================
+   CALORIE TRACKER
+   ============================================================ */
+.cal-tracker {
+  padding: 14px 20px 16px;
+  border-top: 1px solid var(--border-soft);
+  background: var(--surface-2);
+}
+.cal-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+.cal-eaten {
+  font-family: var(--serif);
+  font-size: 24px;
+  font-weight: 400;
+  color: var(--text);
+  letter-spacing: -0.01em;
+}
+.cal-eaten .of {
+  font-family: var(--body);
+  font-size: 12px;
+  color: var(--text-mute);
+  letter-spacing: 0.02em;
+  margin: 0 4px;
+}
+.cal-eaten .target {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 16px;
+  color: var(--text-2);
+}
+.cal-remaining {
+  font-family: var(--body);
+  font-size: 12px;
+  color: var(--sage);
+  font-weight: 500;
+  text-align: right;
+  letter-spacing: 0.02em;
+}
+.cal-remaining.over { color: var(--clay); }
+.cal-bar {
+  height: 6px;
+  background: var(--bg);
+  border-radius: 3px;
+  overflow: hidden;
+  margin-bottom: 10px;
+}
+.cal-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--sage), var(--terracotta));
+  width: 0%;
+  transition: width 0.4s ease;
+  border-radius: 3px;
+}
+.cal-bar-fill.over { background: linear-gradient(90deg, var(--terracotta), var(--clay)); }
+.cal-target-note {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 12px;
+  color: var(--text-mute);
+  line-height: 1.5;
+  margin-bottom: 10px;
+}
+.cal-add {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+.cal-add input {
+  flex: 1;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 8px 12px;
+  font-family: var(--body);
+  font-size: 13px;
+  color: var(--text);
+}
+.cal-add input:focus { outline: none; border-color: var(--terracotta); }
+.cal-add button {
+  padding: 8px 14px;
+  background: var(--terracotta);
+  border: none;
+  border-radius: 10px;
+  color: var(--surface);
+  font-family: var(--body);
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+}
+.cal-add button:hover { opacity: 0.92; }
+.cal-manual-log {
+  margin-top: 10px;
+  font-family: var(--body);
+  font-size: 11px;
+  color: var(--text-mute);
+  line-height: 1.55;
+}
+.cal-manual-log .entry {
+  display: inline-block;
+  margin: 2px 4px 2px 0;
+  padding: 2px 8px;
+  background: var(--bg);
+  border: 1px solid var(--border-soft);
+  border-radius: 10px;
+  cursor: pointer;
+}
+.cal-manual-log .entry:hover { border-color: var(--clay); color: var(--clay); }
+
+/* ============================================================
+   MEAL PICKER MODAL — shows recipe options for a given slot
+   ============================================================ */
+.meal-picker { max-height: none; }
+.recipe-card {
+  margin-bottom: 12px;
+  padding: 14px 16px;
+  background: var(--bg);
+  border: 1px solid var(--border-soft);
+  border-radius: 14px;
+  transition: border-color 0.15s ease;
+}
+.recipe-card:hover { border-color: var(--clay); }
+.recipe-card.selected { border-color: var(--terracotta); background: var(--terra-soft); }
+.recipe-card-hd {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 10px;
+  margin-bottom: 4px;
+}
+.recipe-card-name {
+  font-family: var(--serif);
+  font-size: 16px;
+  color: var(--text);
+  font-weight: 400;
+  line-height: 1.3;
+}
+.recipe-card-cal {
+  flex-shrink: 0;
+  font-family: var(--body);
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  color: var(--text-mute);
+  font-weight: 500;
+}
+.recipe-card-note {
+  font-family: var(--body);
+  font-size: 12.5px;
+  color: var(--text-2);
+  line-height: 1.55;
+  margin-bottom: 8px;
+}
+.recipe-card-from {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 11.5px;
+  color: var(--clay);
+  margin-bottom: 8px;
+}
+.recipe-card-actions {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+.recipe-pick-btn {
+  flex: 1;
+  padding: 9px 14px;
+  background: var(--terracotta);
+  border: none;
+  border-radius: 10px;
+  color: var(--surface);
+  font-family: var(--body);
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  cursor: pointer;
+  font-weight: 500;
+}
+.recipe-pick-btn:hover { opacity: 0.92; }
+.recipe-pick-btn.selected { background: var(--sage); }
+.recipe-search-btn {
+  padding: 9px 14px;
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  color: var(--text-2);
+  font-family: var(--body);
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+}
+.recipe-search-btn:hover { border-color: var(--clay); color: var(--clay); }
+
+.picker-header {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 15px;
+  color: var(--text-2);
+  margin-bottom: 14px;
+  line-height: 1.5;
+}
+
+/* freeform-meal entry */
+.freeform-meal {
+  margin-top: 12px;
+  padding: 12px 14px;
+  background: var(--bg);
+  border: 1px dashed var(--border);
+  border-radius: 12px;
+}
+.freeform-meal-label {
+  font-family: var(--body);
+  font-size: 11px;
+  color: var(--text-mute);
+  margin-bottom: 8px;
+  letter-spacing: 0.04em;
+}
+.freeform-meal-row {
+  display: flex;
+  gap: 6px;
+}
+.freeform-meal-row input.name {
+  flex: 2;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 7px 10px;
+  font-family: var(--body);
+  font-size: 12.5px;
+  color: var(--text);
+}
+.freeform-meal-row input.cal {
+  flex: 1;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 7px 10px;
+  font-family: var(--body);
+  font-size: 12.5px;
+  color: var(--text);
+  max-width: 80px;
+}
+.freeform-meal-row input:focus { outline: none; border-color: var(--terracotta); }
+.freeform-meal-row button {
+  padding: 7px 12px;
+  background: var(--clay);
+  border: none;
+  border-radius: 8px;
+  color: var(--surface);
+  font-family: var(--body);
+  font-size: 11px;
+  cursor: pointer;
+}
+
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
 }
@@ -1067,24 +1565,10 @@ main { position: relative; z-index: 1; }
     </div>
     <div class="modal-body">
       <div class="field">
-        <div class="field-label">Afternoon nourishment</div>
-        <div class="opt-grid" id="opt-snack">
-          <button data-val="yogurt">Greek yogurt + berries</button>
-          <button data-val="eggs">Eggs + fruit</button>
-        </div>
-      </div>
-      <div class="field">
         <div class="field-label">Units</div>
         <div class="opt-grid" id="opt-units">
           <button data-val="imperial">lb / ft</button>
           <button data-val="metric">kg / m</button>
-        </div>
-      </div>
-      <div class="field">
-        <div class="field-label">Sauna / bath ritual</div>
-        <div class="opt-grid" id="opt-sauna">
-          <button data-val="off">Hide</button>
-          <button data-val="on">Show</button>
         </div>
       </div>
       <div class="field">
@@ -1125,6 +1609,17 @@ main { position: relative; z-index: 1; }
   </div>
 </div>
 
+<!-- MEAL PICKER -->
+<div class="overlay" id="modal-meal">
+  <div class="modal meal-picker">
+    <div class="modal-hd">
+      <h3 id="meal-picker-title">Choose a meal</h3>
+      <button class="modal-close" id="meal-close">✕</button>
+    </div>
+    <div class="modal-body" id="meal-body"></div>
+  </div>
+</div>
+
 <div class="toast" id="toast"></div>
 
 <script>
@@ -1154,19 +1649,17 @@ function dayName() { return DAY_NAMES[new Date().getDay()]; }
    ============================================================ */
 function defaultStore() {
   return {
-    history: {},          // 'YYYY-MM-DD': { window, movement, checks:{}, feel, note }
-    weekly: {},           // ISO-week-start: { weight, strength, feel, journal }
-    reflections: {},      // Sunday date: { kindToSelf, energy, oneJoy, completedAt }
+    history: {},          // 'YYYY-MM-DD': { sleep, workoutWindow, workoutActivity, meals:{}, calsManual:[], checks:{}, feel, note }
+    weekly: {},
+    reflections: {},
     settings: {
-      snack: null,        // 'yogurt' | 'eggs'
       units: 'imperial',
-      sauna: false,
       travel: false,
       startDate: null,
     },
-    lastOpen: null,       // last date she opened the app (for welcome-back)
-    showingUpTotal: 0,    // cumulative count of days she showed up. ONLY goes up.
-    countedDays: {},      // 'YYYY-MM-DD': true — days already counted toward showingUpTotal
+    lastOpen: null,
+    showingUpTotal: 0,
+    countedDays: {},
   };
 }
 function loadStore() {
@@ -1189,9 +1682,24 @@ if (!store.weekly) store.weekly = {};
 function getToday() {
   const k = todayKey();
   if (!store.history[k]) {
-    store.history[k] = { window: null, movement: null, checks: {}, feel: null, note: '' };
+    store.history[k] = {
+      sleep: null,             // 'rested' | 'tired' | 'recovery' | 'off'
+      workoutWindow: null,     // 'morning' | 'help' | 'nap' | 'bedtime'
+      workoutActivity: null,   // id from ACTIVITIES
+      workoutDone: false,
+      meals: {},               // { breakfast: {id,name,cal}, lunch: {...}, ... }
+      calsManual: [],          // [{ name, cal }, ...]
+      checks: {},
+      feel: null,
+      note: '',
+    };
   }
-  return store.history[k];
+  // Backfill for older days that don't have new fields
+  const d = store.history[k];
+  if (!d.meals) d.meals = {};
+  if (!d.calsManual) d.calsManual = [];
+  if (!d.checks) d.checks = {};
+  return d;
 }
 
 /* ============================================================
@@ -1222,8 +1730,12 @@ function prettyDate(d) {
    ============================================================ */
 function showedUpToday() {
   const t = getToday();
-  if (t.window) return true;
-  if (t.movement) return true;
+  if (t.sleep) return true;
+  if (t.workoutWindow) return true;
+  if (t.workoutActivity) return true;
+  if (t.workoutDone) return true;
+  if (t.meals && Object.keys(t.meals).length > 0) return true;
+  if (t.calsManual && t.calsManual.length > 0) return true;
   if (t.checks && Object.values(t.checks).some(Boolean)) return true;
   if (t.feel) return true;
   return false;
@@ -1285,70 +1797,173 @@ function morningNote() {
   return MORNING_NOTES[Math.abs(h) % MORNING_NOTES.length];
 }
 
-const GREETINGS = ['Good morning', 'Hello, you', 'Hi, love', 'Morning', 'Here you are'];
+const NAMES = ['Liz', 'Lizzie', 'Elizabeth'];
+function herName() {
+  // Rotate by day so it doesn't feel mechanical, weighted toward Liz/Lizzie
+  const k = todayKey();
+  let h = 0; for (let i=0;i<k.length;i++) h = (h*31 + k.charCodeAt(i))|0;
+  const pool = ['Liz', 'Lizzie', 'Liz', 'Lizzie', 'Elizabeth']; // Liz/Lizzie 4 of 5 days
+  return pool[Math.abs(h) % pool.length];
+}
 function greeting() {
   const h = new Date().getHours();
-  if (h < 5) return 'Still up';
-  if (h < 12) return GREETINGS[new Date().getDate() % GREETINGS.length];
-  if (h < 17) return 'Good afternoon';
-  return 'Good evening';
+  const name = herName();
+  if (h < 5) return 'Still up, ' + name;
+  if (h < 12) return 'Good morning, ' + name;
+  if (h < 17) return 'Good afternoon, ' + name;
+  return 'Good evening, ' + name;
 }
 
 /* ============================================================
-   MOVEMENT WINDOWS — sized to her real life
+   SLEEP MODES — first decision of the day, drives the rest
    ============================================================ */
-const WINDOWS = [
-  { id: 'morning', label: 'Morning', sub: 'after Ana settles', lastResort: false },
-  { id: 'carla',   label: 'Carla here', sub: 'Ava & Ana covered', lastResort: false },
-  { id: 'nap',     label: 'Naptime', sub: 'if it lands', lastResort: false },
-  { id: 'evening', label: 'Evening', sub: 'last resort', lastResort: true },
-];
+const SLEEP_MODES = {
+  rested: {
+    label: 'Slept well',
+    sub: 'enough rest, ready to move',
+    workoutFactor: 1.0,         // 100% of base duration
+    minDur: 20, maxDur: 35,     // 20-35 min
+    guidance: "You've got the fuel for a real session — push a little, with grace.",
+    statusClass: 'rested',
+  },
+  tired: {
+    label: 'Slept rough',
+    sub: 'tired, but moving still helps',
+    workoutFactor: 0.65,        // ~2/3 the duration, easier intensity
+    minDur: 15, maxDur: 25,
+    guidance: 'Keep it steady and short. A gentler version is exactly right today.',
+    statusClass: 'tired-mode',
+  },
+  recovery: {
+    label: 'Recovery day',
+    sub: 'walk, stretch, breathe',
+    workoutFactor: 0.5,
+    minDur: 10, maxDur: 25,
+    guidance: 'Slow movement — a walk, a stretch. Active rest is part of the work.',
+    statusClass: 'rest-mode',
+  },
+  off: {
+    label: 'Day off',
+    sub: 'no workout today, on purpose',
+    workoutFactor: 0,
+    minDur: 0, maxDur: 0,
+    guidance: 'Off days are protective. The body builds on the rest, not just the reps.',
+    statusClass: 'off-mode',
+  },
+};
 
-const MOVEMENT_MENU = [
-  { id: 'peloton', label: 'Peloton ride or class', note: '20–30 min — pick a class you love, not the hardest one' },
-  { id: 'run',     label: 'Run', note: 'Easy pace counts. Stroller counts. Walk breaks count.' },
-  { id: 'lift',    label: 'Lift', note: 'Even 20 min of strength rebuilds you. Go lighter than your old self for now.' },
-  { id: 'bike',    label: 'Bike', note: 'Outdoor or trainer. Moving air, moving legs.' },
-  { id: 'walk',    label: 'Just a walk', note: 'Always available. Always enough on a hard day.' },
+/* ============================================================
+   WORKOUT WINDOWS — when she'll move, only shown for non-off days
+   ============================================================ */
+const WORKOUT_WINDOWS = [
+  { id: 'morning',  label: 'First thing',      sub: 'before the day takes over' },
+  { id: 'help',     label: 'During help',      sub: 'Carla or Max with the girls' },
+  { id: 'nap',      label: 'During naptime',   sub: 'if both girls land it' },
+  { id: 'bedtime',  label: 'After bedtime',    sub: 'last resort, but valid' },
 ];
 
 /* ============================================================
-   NOURISH — gentle, additive. Never restrictive. Treats welcome.
+   WORKOUT ACTIVITIES — Peloton-centric, with general guidance
    ============================================================ */
-const NOURISH_PRINCIPLES = [
-  { t: 'Protein first', d: 'Eggs, yogurt, meat, a shake. It steadies energy and milk supply more than anything else.' },
-  { t: 'Add color', d: 'Fruit or a vegetable alongside whatever you\'re already eating. Add, don\'t subtract.' },
-  { t: 'Water near you', d: 'Nursing around the clock is thirsty work. A full glass within reach beats a perfect meal.' },
-  { t: 'Eat enough', d: 'Now is not the season to undereat. Fuel the body that\'s feeding a baby.' },
+const ACTIVITIES = [
+  { id: 'peloton-ride',     label: 'Peloton ride',          baseDur: 30, note: 'Low-impact, big cardio. Search a class that matches your mood, not your guilt.' },
+  { id: 'peloton-strength', label: 'Peloton strength',      baseDur: 25, note: 'Even 20 minutes of lifting rebuilds postpartum strength faster than cardio alone.' },
+  { id: 'peloton-yoga',     label: 'Peloton yoga / stretch', baseDur: 20, note: 'Recovery, mobility, breath. Counts fully — especially on a tired day.' },
+  { id: 'run',              label: 'Run',                    baseDur: 25, note: 'Easy pace, walk breaks fine. Stroller runs count for the whole duration.' },
+  { id: 'lift',             label: 'Lift (free weights)',    baseDur: 25, note: 'Compound movements: squats, rows, presses. Go lighter than the old you for now.' },
+  { id: 'bike',             label: 'Bike outdoors',          baseDur: 30, note: 'Moving air, moving legs. Stop when you need to.' },
+  { id: 'walk',             label: 'A walk',                 baseDur: 25, note: 'Always available. Always enough — especially on a tired day.' },
 ];
 
-const TREATS_NOTES = [
-  "Baking is allowed. It's not a slip — it's something that makes you happy, and that matters right now.",
-  "A treat is part of a good life, not a break from a good one. Enjoy it without the math.",
-  "You love a treat. Good. Have it, taste it fully, and don't spend a second feeling guilty.",
-  "The goal was never restriction. It's strength and feeling like you. Cake fits inside that.",
+/* ============================================================
+   CALORIE TARGETS (postpartum + breastfeeding aware)
+   These are GENTLE deficits. The body that feeds Ana needs fuel.
+   Baseline maintenance assumption: ~2200 cal/day for breastfeeding mom
+   (~1800 base + 400 milk-production). Deficits stay in the 300-500 range.
+   ============================================================ */
+const CAL_TARGETS = {
+  rested:   { target: 1900, range: '1800–2000', note: 'A modest deficit on a strong day — fat loss is steady, milk supply intact.' },
+  tired:    { target: 2000, range: '1900–2100', note: 'Bring it up a little on a tired day. Less deficit, more grace. Sleep matters more than the number.' },
+  recovery: { target: 2000, range: '1900–2100', note: 'Recovery days hold ground — they don\'t go backward. Eat enough to actually recover.' },
+  off:      { target: 2100, range: '2000–2200', note: 'On rest days, eat close to maintenance. The deficit comes back tomorrow.' },
+};
+
+/* ============================================================
+   MEAL LIBRARY — real, simple, postpartum-friendly recipes
+   "from": who made it / what kind of source for recipe-search button
+   ============================================================ */
+const MEALS = {
+  breakfast: [
+    { id: 'b-yogurt-bowl',      name: 'Greek yogurt + berries + honey + chia',          cal: 320, note: 'High protein, 3 minutes, hand-holdable.', from: 'Sami Spalter breakfast inspo' },
+    { id: 'b-eggs-toast',       name: 'Two eggs + sourdough + avocado',                 cal: 420, note: 'Protein + fat + slow carb. The classic for a reason.', from: 'Sami Spalter style' },
+    { id: 'b-protein-smoothie', name: 'Protein smoothie (banana, PB, milk)',            cal: 380, note: 'Blend in 60 sec, sip through the morning.', from: 'Kendall Toole favorite' },
+    { id: 'b-overnight-oats',   name: 'Overnight oats with berries + nut butter',       cal: 360, note: 'Made the night before. Grab and eat while feeding Ana.', from: 'Sami Spalter postpartum staple' },
+    { id: 'b-cottage-toast',    name: 'Cottage cheese + tomato on sourdough',           cal: 310, note: '20g protein in three minutes. Salt generously.', from: 'high-protein postpartum breakfast' },
+    { id: 'b-banana-pancakes',  name: 'Two-ingredient banana oat pancakes',             cal: 290, note: 'Banana + oats blended. Eggs in there for protein. Ava can help.', from: 'easy postpartum pancake recipe' },
+  ],
+  lunch: [
+    { id: 'l-chicken-salad',    name: 'Chicken salad on greens with olive oil + lemon', cal: 450, note: 'Rotisserie chicken cuts prep to zero. Add seeds for crunch.', from: 'Sami Spalter chicken meal prep' },
+    { id: 'l-bowl',             name: 'Grain bowl: quinoa, chickpeas, feta, cucumber',  cal: 520, note: 'Make once, eat three times. Endlessly riff-able.', from: 'easy mediterranean grain bowl recipe' },
+    { id: 'l-wrap',             name: 'Turkey + hummus wrap with spinach',              cal: 430, note: 'One-handed, eats well cold. Survives a delayed lunch.', from: 'high-protein turkey wrap recipe' },
+    { id: 'l-soup-bread',       name: 'Lentil soup + a slice of good bread',            cal: 470, note: 'Batch-cook on Sunday, eat all week. Iron + protein.', from: 'easy lentil soup recipe' },
+    { id: 'l-salmon-bowl',      name: 'Smoked salmon bowl with rice + avocado',         cal: 520, note: 'Pricey but no cooking. Omega-3s help mood.', from: 'salmon rice bowl postpartum' },
+    { id: 'l-eggs-toast',       name: 'Scrambled eggs + toast (lunch edition)',         cal: 410, note: 'No shame in breakfast for lunch. Three eggs, real butter.', from: 'eggs for lunch easy recipe' },
+  ],
+  dinner: [
+    { id: 'd-sheetpan',         name: 'Sheet-pan chicken + roasted veg',                cal: 540, note: 'One pan, 25 min, ignore it. Leftovers for tomorrow.', from: 'Sami Spalter sheet pan dinner' },
+    { id: 'd-salmon',           name: 'Pan-seared salmon + greens + sweet potato',      cal: 580, note: 'Skin-on, 4 min each side. Restorative.', from: 'easy weeknight salmon recipe' },
+    { id: 'd-stir-fry',         name: 'Beef + broccoli stir-fry over rice',             cal: 620, note: 'Iron-rich for postpartum. Fast in one pan.', from: 'easy beef broccoli stir fry' },
+    { id: 'd-pasta',            name: 'Whole-wheat pasta + chicken + pesto + arugula',  cal: 580, note: 'Comforting and quick. Tastes like Sunday.', from: 'easy pesto pasta recipe' },
+    { id: 'd-tacos',            name: 'Ground turkey tacos with all the toppings',      cal: 560, note: 'Ava picks toppings. Calories adjust to what you build.', from: 'easy turkey taco recipe' },
+    { id: 'd-bowls',            name: 'Burrito bowls (Chipotle-style at home)',         cal: 590, note: 'Rice, beans, chicken, salsa, avocado. Bowl assembly is a meditation.', from: 'easy chipotle bowl recipe' },
+  ],
+  snack: [
+    { id: 's-yogurt-berries',   name: 'Greek yogurt + berries',                         cal: 180, note: 'Protein-forward and easy.', from: '' },
+    { id: 's-eggs-fruit',       name: 'Two hard-boiled eggs + an apple',                cal: 200, note: 'Pack of cards-sized, satisfies.', from: '' },
+    { id: 's-cheese-fruit',     name: 'String cheese + grapes',                         cal: 160, note: 'The classic. No prep.', from: '' },
+    { id: 's-nuts-fruit',       name: 'Almonds + dates',                                cal: 220, note: 'Energy that lasts. Good before a workout.', from: '' },
+    { id: 's-protein-bar',      name: 'A good protein bar',                             cal: 200, note: 'RX, Aloha, Built — whichever you actually enjoy.', from: '' },
+    { id: 's-toast-pb',         name: 'Toast + peanut butter + banana',                 cal: 280, note: 'For the days you need a real bite, not a snack.', from: '' },
+  ],
+  treat: [
+    { id: 't-skip',             name: 'Skip the treat today',                           cal: 0,   note: 'Some days you don\'t want one. That counts too.', from: '' },
+    { id: 't-square',           name: 'Square of dark chocolate (70%+)',                cal: 60,  note: 'Slow, intentional. One square, fully tasted.', from: '' },
+    { id: 't-cookie',           name: 'A homemade cookie',                              cal: 180, note: 'You bake. This is part of your life. Enjoy without math.', from: '' },
+    { id: 't-icecream',         name: 'A scoop of ice cream',                           cal: 220, note: 'Real bowl, real spoon, no guilt.', from: '' },
+    { id: 't-wine',             name: 'Glass of wine',                                  cal: 140, note: 'Time and amount permitting with nursing.', from: '' },
+    { id: 't-baked',            name: 'Something you baked',                            cal: 250, note: 'Baking is your joy. The variable estimate covers most things.', from: '' },
+  ],
+};
+
+const MEAL_SLOTS = [
+  { id: 'breakfast', label: 'Breakfast', target: 'cal-bf' },
+  { id: 'lunch',     label: 'Lunch',     target: 'cal-ln' },
+  { id: 'dinner',    label: 'Dinner',    target: 'cal-dn' },
+  { id: 'snack',     label: 'Snack',     target: 'cal-sn' },
+  { id: 'treat',     label: 'Treat',     target: 'cal-tr' },
 ];
-function treatsNote() {
+
+/* ============================================================
+   AFTERNOON SNACK ROTATION — automatic, gentle, never restrictive
+   ============================================================ */
+const AUTO_SNACK_POOL = [
+  { id: 's-yogurt-berries', name: 'Greek yogurt + berries' },
+  { id: 's-eggs-fruit',     name: 'Two hard-boiled eggs + fruit' },
+  { id: 's-cheese-fruit',   name: 'String cheese + grapes' },
+  { id: 's-nuts-fruit',     name: 'Almonds + dates' },
+];
+function todaysSuggestedSnack() {
   const k = todayKey();
-  let h = 7; for (let i=0;i<k.length;i++) h = (h*17 + k.charCodeAt(i))|0;
-  return TREATS_NOTES[Math.abs(h) % TREATS_NOTES.length];
+  let h = 11; for (let i=0;i<k.length;i++) h = (h*23 + k.charCodeAt(i))|0;
+  return AUTO_SNACK_POOL[Math.abs(h) % AUTO_SNACK_POOL.length];
 }
 
 /* ============================================================
-   NOURISH CHECK ITEMS (gentle wins, rose-colored)
+   LEGACY constants kept for compatibility (no longer rendered as primary UI)
    ============================================================ */
-function nourishItems() {
-  const snack = store.settings.snack;
-  let snackText = 'A nourishing afternoon snack';
-  if (snack === 'yogurt') snackText = 'Greek yogurt + berries';
-  else if (snack === 'eggs') snackText = 'Eggs + fruit';
-  return [
-    { id: 'n-protein', text: 'A protein-first breakfast', detail: 'Eggs, yogurt, a shake — whatever\'s easiest to reach.' },
-    { id: 'n-water',   text: 'A full glass of water', detail: 'Keep one near wherever you feed Ana.' },
-    { id: 'n-snack',   text: snackText, detail: snack ? 'Your chosen easy snack.' : 'Pick a default in settings, or just eat something good.' },
-    { id: 'n-color',   text: 'Something colorful', detail: 'Fruit or veg alongside one meal. That\'s the whole ask.' },
-  ];
-}
+const WINDOWS = WORKOUT_WINDOWS; // alias so old code paths don't crash if any reference remains
+const MOVEMENT_MENU = ACTIVITIES;
+const NOURISH_PRINCIPLES = [];
 
 /* ============================================================
    PERMISSION CARD — soft Sami-voiced "let it go"
@@ -1382,18 +1997,6 @@ const PARENTING_AIMS = [
   { t: 'Potty training Ava', d: 'A relaxed weekend, lots of patience, zero pressure. Accidents are part of it. Once it clicks, that\'s a whole category of work gone.' },
   { t: 'A longer stretch for Ana', d: 'As she grows, that 3–4am wake will shift. You\'re not doing anything wrong. It changes on its own.' },
   { t: 'Trading edges with help', d: 'A standing time with Carla, or a handoff with Max, that you can count on each week. Protected time you don\'t have to negotiate each day.' },
-];
-
-/* ============================================================
-   SIMPLE RECIPES — dead simple, tasty, healthy. For her + Ava.
-   ============================================================ */
-const RECIPES = [
-  { name: 'Yogurt bowl, two ways', who: 'her + Ava', body: 'Greek yogurt + berries + a drizzle of honey. For Ava: same, mashed softer with a little banana. 2 minutes. High protein, feels like a treat.' },
-  { name: 'Eggs + toast soldiers', who: 'her + Ava', body: 'Scramble 3 eggs in butter, soft. Toast cut in strips for Ava to dip. Add fruit on the side. Protein + something Ava will actually eat.' },
-  { name: 'Sheet-pan chicken + veg', who: 'her', body: 'Chicken thighs + chopped veg on one pan, olive oil, salt. 400°F, 25 min, ignore it. Makes leftovers for tomorrow\'s lunch too.' },
-  { name: 'The 5-minute wrap', who: 'her', body: 'Tortilla + rotisserie chicken + cheese + spinach + whatever sauce. Fold, eat one-handed while holding Ana. Protein without a single dish.' },
-  { name: 'Smoothie you can drink later', who: 'her', body: 'Frozen fruit + Greek yogurt or protein powder + milk + spoon of nut butter. Blend in the morning, sip through the day. Survives a forgotten hour on the counter.' },
-  { name: 'Banana oat bites', who: 'her + Ava', body: 'Mash 2 bananas + 1 cup oats + handful chocolate chips. Spoon onto tray, 350°F 12 min. Ava helps mash. A treat that\'s basically breakfast.' },
 ];
 
 /* ============================================================
@@ -1464,94 +2067,374 @@ function renderPresence() {
 }
 
 /* ============================================================
-   MOVEMENT CARD — window picker + movement menu, sized small
+   SLEEP GATE — first decision of the day
    ============================================================ */
-function renderMovementCard() {
+function renderSleepGate() {
+  const wrap = el('div', { class: 'sleep-gate' });
+  wrap.appendChild(el('div', { class: 'sleep-gate-sub' }, 'FIRST THING'));
+  wrap.appendChild(el('h2', { class: 'sleep-gate-q' }, 'How was your sleep?'));
+  wrap.appendChild(el('div', { style: 'font-family:var(--body);font-size:12.5px;color:var(--text-mute);margin-bottom:18px;line-height:1.5;' },
+    'This shapes the day. There\'s no wrong answer — only an honest one.'));
+  const opts = el('div', { class: 'sleep-options' });
+  ['rested','tired','recovery','off'].forEach((id, idx) => {
+    const mode = SLEEP_MODES[id];
+    const opt = el('div', {
+      class: 'sleep-option' + (idx === 0 ? ' full' : ''),
+      onclick: () => setSleep(id),
+    });
+    opt.appendChild(el('div', { class: 'sleep-option-label' }, mode.label));
+    opt.appendChild(el('div', { class: 'sleep-option-sub' }, mode.sub));
+    opts.appendChild(opt);
+  });
+  wrap.appendChild(opts);
+  return wrap;
+}
+
+function setSleep(mode) {
   const t = getToday();
+  t.sleep = mode;
+  // Clear workout selections when sleep mode changes drastically
+  if (mode === 'off') { t.workoutWindow = null; t.workoutActivity = null; }
+  saveStore(); maybeCountToday(); render();
+  const m = SLEEP_MODES[mode];
+  showToast(m.label + ' — today\'s rhythm is set');
+}
+
+function renderSleepStatus() {
+  const t = getToday();
+  const m = SLEEP_MODES[t.sleep];
+  const wrap = el('div', { class: 'sleep-status ' + m.statusClass });
+  const txt = el('div', { class: 'sleep-status-text' });
+  txt.innerHTML = 'Today: <b>' + m.label + '</b>';
+  wrap.appendChild(txt);
+  wrap.appendChild(el('button', { onclick: () => { t.sleep = null; t.workoutWindow = null; t.workoutActivity = null; saveStore(); render(); } }, 'change'));
+  return wrap;
+}
+
+/* ============================================================
+   WORKOUT CARD — window picker → activity → prescription
+   ============================================================ */
+function renderWorkoutCard() {
+  const t = getToday();
+  const m = SLEEP_MODES[t.sleep];
   const card = el('div', { class: 'card' });
 
-  const head = el('div', { class: 'card-head' },
-    el('div', { class: 'card-head-left', html: SPRIG_SVG + '<h2 class="card-title">Move a little</h2>' }),
-    el('div', { class: 'card-tag' }, '20–30 min')
-  );
-  card.appendChild(head);
-  card.appendChild(el('div', { class: 'card-intro' }, 'When does today have a pocket of time? Pick the one that fits — there are no wrong answers, and skipping is one of them.'));
+  // Day-off branch
+  if (t.sleep === 'off') {
+    card.appendChild(el('div', { class: 'card-head' },
+      el('div', { class: 'card-head-left', html: SPRIG_SVG + '<h2 class="card-title">A day off</h2>' }),
+      el('div', { class: 'card-tag' }, 'rest')
+    ));
+    const wp = el('div', { class: 'workout-prescription off' });
+    wp.appendChild(el('div', { class: 'wp-label' }, 'Today'));
+    wp.appendChild(el('div', { class: 'wp-duration' }, 'Rest fully'));
+    wp.appendChild(el('div', { class: 'wp-guidance' }, m.guidance));
+    card.appendChild(wp);
+    card.appendChild(el('div', { class: 'card-intro', style: 'padding:14px 20px;' },
+      'You can still log meals below. Eating well on rest days is part of progress.'));
+    return card;
+  }
 
-  // Window chips
-  const wrow = el('div', { class: 'window-row' });
-  wrow.appendChild(el('div', { class: 'window-label' }, 'A window for you'));
-  const chips = el('div', { class: 'window-chips' });
-  WINDOWS.forEach(w => {
+  // Header
+  const isRecovery = t.sleep === 'recovery';
+  const isTired = t.sleep === 'tired';
+  const headerTitle = isRecovery ? 'Move gently' : 'Move today';
+  const tag = isRecovery ? 'recovery' : (isTired ? 'shorter' : '20–35 min');
+  card.appendChild(el('div', { class: 'card-head' },
+    el('div', { class: 'card-head-left', html: SPRIG_SVG + '<h2 class="card-title">' + headerTitle + '</h2>' }),
+    el('div', { class: 'card-tag' }, tag)
+  ));
+
+  // Activity + duration prescription (only shows after activity is chosen, else shows generic guidance)
+  if (t.workoutActivity) {
+    const act = ACTIVITIES.find(a => a.id === t.workoutActivity);
+    const dur = Math.round(act.baseDur * m.workoutFactor);
+    const wp = el('div', { class: 'workout-prescription' + (isRecovery ? ' rest' : '') });
+    wp.appendChild(el('div', { class: 'wp-label' }, 'Today\'s prescription'));
+    const dv = el('div', { class: 'wp-duration' });
+    dv.innerHTML = dur + '<span class="unit">min · ' + act.label.toLowerCase() + '</span>';
+    wp.appendChild(dv);
+    wp.appendChild(el('div', { class: 'wp-guidance' }, m.guidance + ' ' + act.note));
+    card.appendChild(wp);
+  } else {
+    card.appendChild(el('div', { class: 'card-intro' }, m.guidance + ' Pick a window, then pick how you\'ll move.'));
+  }
+
+  // Window picker
+  const winRow = el('div', { class: 'window-row' });
+  winRow.appendChild(el('div', { class: 'window-label' }, 'When today?'));
+  const winChips = el('div', { class: 'window-chips' });
+  WORKOUT_WINDOWS.forEach(w => {
     const chip = el('div', {
-      class: 'window-chip' + (w.lastResort ? ' last-resort' : '') + (t.window === w.id ? ' active' : ''),
-      onclick: () => { t.window = (t.window === w.id ? null : w.id); saveStore(); maybeCountToday(); render(); }
+      class: 'window-chip' + (w.id === 'bedtime' ? ' last-resort' : '') + (t.workoutWindow === w.id ? ' active' : ''),
+      onclick: () => {
+        t.workoutWindow = (t.workoutWindow === w.id ? null : w.id);
+        saveStore(); maybeCountToday(); render();
+      }
     });
     chip.appendChild(el('span', null, w.label));
     chip.appendChild(el('small', null, w.sub));
-    chips.appendChild(chip);
+    winChips.appendChild(chip);
   });
-  wrow.appendChild(chips);
-  card.appendChild(wrow);
+  winRow.appendChild(winChips);
+  card.appendChild(winRow);
 
-  // Movement menu — choosing one logs it & counts as showing up
-  const menu = el('div', { class: 'move-menu' });
-  MOVEMENT_MENU.forEach(m => {
-    const chosen = t.movement === m.id;
-    const opt = el('div', {
-      class: 'move-opt',
-      style: 'cursor:pointer;' + (chosen ? 'opacity:1;' : 'opacity:0.78;'),
-      onclick: () => { t.movement = (t.movement === m.id ? null : m.id); saveStore(); maybeCountToday(); render();
-        if (t.movement) showToast('Logged: ' + m.label.toLowerCase()); }
-    });
-    const dot = el('div', { class: 'move-opt-dot', style: chosen ? 'opacity:1;width:10px;height:10px;' : '' });
-    const txt = el('div', null,
-      el('div', { class: 'move-opt-text', style: chosen ? 'font-weight:600;' : '' }, m.label),
-      el('div', { style: 'font-family:var(--body);font-size:11.5px;color:var(--text-mute);line-height:1.4;margin-top:1px;' }, m.note)
-    );
-    opt.appendChild(dot);
-    opt.appendChild(txt);
-    menu.appendChild(opt);
-  });
-  card.appendChild(menu);
-
-  if (t.window === 'evening') {
-    card.appendChild(el('div', { class: 'card-intro', style: 'color:var(--plum);padding-top:8px;' },
-      'Evening — your last resort. Totally fine to use it, but if mornings or Carla\'s visits can hold this more often, you\'ll enjoy it more.'));
+  if (t.workoutWindow === 'bedtime') {
+    card.appendChild(el('div', { class: 'card-intro', style: 'color:var(--plum);padding:6px 20px 4px;' },
+      'After bedtime — last resort, but real. Keep it shorter than you think; sleep is the bigger priority.'));
   }
+
+  // Activity picker
+  const actRow = el('div', { class: 'window-row' });
+  actRow.appendChild(el('div', { class: 'window-label' }, 'How will you move?'));
+  const actChips = el('div', { class: 'window-chips', style: 'display:grid;grid-template-columns:1fr 1fr;gap:6px;' });
+  ACTIVITIES.forEach(a => {
+    const chip = el('div', {
+      class: 'window-chip' + (t.workoutActivity === a.id ? ' active' : ''),
+      style: 'flex:none;',
+      onclick: () => {
+        t.workoutActivity = (t.workoutActivity === a.id ? null : a.id);
+        saveStore(); maybeCountToday(); render();
+        if (t.workoutActivity) showToast('Set: ' + a.label.toLowerCase());
+      }
+    });
+    chip.appendChild(el('span', null, a.label));
+    actChips.appendChild(chip);
+  });
+  actRow.appendChild(actChips);
+  card.appendChild(actRow);
+
+  // "I did it" button — visible only once she's picked window + activity and hasn't marked done
+  if (t.workoutWindow && t.workoutActivity && !t.workoutDone) {
+    const doneBtn = el('button', {
+      style: 'margin:16px 20px 18px;padding:13px;background:var(--sage);border:none;border-radius:12px;color:var(--surface);font-family:var(--body);font-size:13px;letter-spacing:0.06em;cursor:pointer;width:calc(100% - 40px);',
+      onclick: () => { t.workoutDone = true; saveStore(); render(); showToast('Beautiful. That counts — fully.'); }
+    }, '✓  I moved today');
+    card.appendChild(doneBtn);
+  } else if (t.workoutDone) {
+    card.appendChild(el('div', { style: 'margin:14px 20px 18px;padding:13px 16px;background:var(--sage-soft);border-radius:12px;font-family:var(--serif);font-style:italic;color:var(--text-2);text-align:center;font-size:14px;' },
+      '✓ Moved. That\'s the whole thing.'));
+  }
+
   return card;
 }
 
 /* ============================================================
-   NOURISH CARD — gentle, additive, treats welcome
+   MEAL CARD — breakfast/lunch/dinner/snack/treat with calorie tally
    ============================================================ */
-function renderNourishCard() {
+function renderMealCard() {
   const t = getToday();
   const card = el('div', { class: 'card' });
-  card.appendChild(el('div', { class: 'card-head' },
-    el('div', { class: 'card-head-left', html: SPRIG_SVG + '<h2 class="card-title">Nourish</h2>' }),
-    el('div', { class: 'card-tag' }, 'add, don\'t subtract')
-  ));
-  card.appendChild(el('div', { class: 'card-intro' }, 'Not a diet. Just a few good things to reach for. Tap what you managed — any one is a win.'));
 
-  nourishItems().forEach(it => {
-    const checked = !!t.checks[it.id];
+  card.appendChild(el('div', { class: 'card-head' },
+    el('div', { class: 'card-head-left', html: SPRIG_SVG + '<h2 class="card-title">Eat well today</h2>' }),
+    el('div', { class: 'card-tag' }, 'gentle, real food')
+  ));
+  card.appendChild(el('div', { class: 'card-intro' }, 'Tap any slot to pick from real, dead-simple options. Skip what doesn\'t apply.'));
+
+  // Meal slots
+  MEAL_SLOTS.forEach(slot => {
+    const chosen = t.meals[slot.id];
     const row = el('div', {
-      class: 'item nourish' + (checked ? ' checked' : ''),
-      dataset: { id: it.id },
-      onclick: () => toggleCheck(it.id)
+      class: 'meal-item',
+      onclick: () => openMealPicker(slot.id),
     });
-    row.appendChild(el('div', { class: 'bud' }));
-    const main = el('div', { class: 'item-main' },
-      el('div', { class: 'item-text', html: '<strong>' + it.text + '</strong>' }),
-      el('div', { class: 'item-detail' }, it.detail)
-    );
-    row.appendChild(main);
+    const rrow = el('div', { class: 'meal-row' });
+    const label = el('div', { class: 'meal-label' });
+    label.appendChild(el('div', { class: 'meal-label-name' }, slot.label));
+    if (chosen && chosen.cal != null) {
+      label.appendChild(el('div', { class: 'meal-label-cal' }, '~' + chosen.cal + ' cal'));
+    }
+    rrow.appendChild(label);
+    const pick = el('div', { class: 'meal-pick' });
+    if (chosen) {
+      pick.appendChild(el('div', { class: 'meal-pick-name' }, chosen.name));
+      if (chosen.note) pick.appendChild(el('div', { class: 'meal-pick-note' }, chosen.note));
+    } else {
+      pick.appendChild(el('div', { class: 'meal-pick-name placeholder' }, 'tap to choose'));
+    }
+    rrow.appendChild(pick);
+    row.appendChild(rrow);
     card.appendChild(row);
   });
 
-  // Treats note — reframes baking as joy
-  card.appendChild(el('div', { class: 'treats-note' }, treatsNote()));
+  // Calorie tracker
+  card.appendChild(renderCalorieTracker());
   return card;
+}
+
+function renderCalorieTracker() {
+  const t = getToday();
+  const sleepMode = t.sleep && CAL_TARGETS[t.sleep] ? t.sleep : 'rested';
+  const tgt = CAL_TARGETS[sleepMode];
+
+  // Sum eaten from meals + manual
+  let eaten = 0;
+  Object.values(t.meals || {}).forEach(m => { if (m && typeof m.cal === 'number') eaten += m.cal; });
+  (t.calsManual || []).forEach(c => { eaten += c.cal; });
+
+  const remaining = tgt.target - eaten;
+  const overBy = -remaining;
+  const pct = Math.min(100, Math.max(0, (eaten / tgt.target) * 100));
+
+  const wrap = el('div', { class: 'cal-tracker' });
+
+  const row = el('div', { class: 'cal-row' });
+  const eaten_el = el('div', { class: 'cal-eaten' });
+  eaten_el.innerHTML = eaten + '<span class="of">of</span><span class="target">' + tgt.target + '</span>';
+  row.appendChild(eaten_el);
+  const rem_el = el('div', { class: 'cal-remaining' + (remaining < 0 ? ' over' : '') },
+    remaining >= 0 ? (remaining + ' left') : ('over by ' + overBy));
+  row.appendChild(rem_el);
+  wrap.appendChild(row);
+
+  const bar = el('div', { class: 'cal-bar' });
+  const fill = el('div', { class: 'cal-bar-fill' + (remaining < 0 ? ' over' : '') });
+  fill.style.width = pct + '%';
+  bar.appendChild(fill);
+  wrap.appendChild(bar);
+
+  let sleepLabel;
+  if (sleepMode === 'rested') sleepLabel = 'On a rested day';
+  else if (sleepMode === 'tired') sleepLabel = 'On a tired day';
+  else if (sleepMode === 'recovery') sleepLabel = 'On a recovery day';
+  else sleepLabel = 'On a rest day';
+  wrap.appendChild(el('div', { class: 'cal-target-note' },
+    sleepLabel + ': aim for ' + tgt.range + '. ' + tgt.note));
+
+  // Add manual calories
+  const addRow = el('div', { class: 'cal-add' });
+  const nameInput = document.createElement('input');
+  nameInput.placeholder = 'e.g. handful of nuts';
+  nameInput.style.flex = '2';
+  const calInput = document.createElement('input');
+  calInput.type = 'number';
+  calInput.placeholder = 'cal';
+  calInput.style.maxWidth = '70px';
+  calInput.style.flex = '1';
+  const addBtn = el('button', {
+    onclick: () => {
+      const nm = nameInput.value.trim() || 'something';
+      const cl = parseInt(calInput.value, 10);
+      if (!cl || isNaN(cl)) { showToast('Add a calorie estimate'); return; }
+      t.calsManual.push({ name: nm, cal: cl });
+      saveStore(); maybeCountToday(); render();
+    }
+  }, 'add');
+  addRow.appendChild(nameInput);
+  addRow.appendChild(calInput);
+  addRow.appendChild(addBtn);
+  wrap.appendChild(addRow);
+
+  // Manual log (tap to remove)
+  if ((t.calsManual || []).length > 0) {
+    const log = el('div', { class: 'cal-manual-log' });
+    log.appendChild(el('span', { style: 'margin-right:6px;color:var(--text-mute);' }, 'Added:'));
+    t.calsManual.forEach((c, idx) => {
+      const ent = el('span', {
+        class: 'entry',
+        title: 'tap to remove',
+        onclick: () => { t.calsManual.splice(idx, 1); saveStore(); render(); }
+      }, c.name + ' · ' + c.cal + ' cal');
+      log.appendChild(ent);
+    });
+    wrap.appendChild(log);
+  }
+
+  return wrap;
+}
+
+/* ============================================================
+   MEAL PICKER MODAL — choose from real recipes for the slot
+   ============================================================ */
+function openMealPicker(slotId) {
+  const slot = MEAL_SLOTS.find(s => s.id === slotId);
+  document.getElementById('meal-picker-title').textContent = slot.label;
+  const body = document.getElementById('meal-body');
+  body.innerHTML = '';
+  body.appendChild(el('div', { class: 'picker-header' },
+    slotId === 'treat'
+      ? 'Treats are part of a good life, not a break from one. Pick what fits today — or skip.'
+      : 'Tap to pick. Tap the recipe link to open search for the full how-to.'));
+
+  const t = getToday();
+  const chosen = t.meals[slotId];
+  const options = MEALS[slotId] || [];
+
+  options.forEach(opt => {
+    const card = el('div', { class: 'recipe-card' + (chosen && chosen.id === opt.id ? ' selected' : '') });
+    const hd = el('div', { class: 'recipe-card-hd' });
+    hd.appendChild(el('div', { class: 'recipe-card-name' }, opt.name));
+    if (opt.cal != null && opt.cal > 0) hd.appendChild(el('div', { class: 'recipe-card-cal' }, '~' + opt.cal + ' cal'));
+    card.appendChild(hd);
+    if (opt.note) card.appendChild(el('div', { class: 'recipe-card-note' }, opt.note));
+    if (opt.from) card.appendChild(el('div', { class: 'recipe-card-from' }, 'from: ' + opt.from));
+    const acts = el('div', { class: 'recipe-card-actions' });
+    const pickBtn = el('button', {
+      class: 'recipe-pick-btn' + (chosen && chosen.id === opt.id ? ' selected' : ''),
+      onclick: () => {
+        if (chosen && chosen.id === opt.id) {
+          delete t.meals[slotId];
+        } else {
+          t.meals[slotId] = { id: opt.id, name: opt.name, cal: opt.cal, note: opt.note };
+        }
+        saveStore(); maybeCountToday(); closeMealPicker(); render();
+      }
+    }, (chosen && chosen.id === opt.id) ? '✓ chosen' : 'pick this');
+    acts.appendChild(pickBtn);
+    if (opt.from) {
+      const q = encodeURIComponent(opt.from + ' ' + opt.name);
+      const searchA = document.createElement('a');
+      searchA.className = 'recipe-search-btn';
+      searchA.href = 'https://www.google.com/search?q=' + q;
+      searchA.target = '_blank';
+      searchA.rel = 'noopener noreferrer';
+      searchA.textContent = 'find recipe →';
+      acts.appendChild(searchA);
+    }
+    card.appendChild(acts);
+    body.appendChild(card);
+  });
+
+  // Freeform entry
+  const ff = el('div', { class: 'freeform-meal' });
+  ff.appendChild(el('div', { class: 'freeform-meal-label' }, 'Or, log your own:'));
+  const row = el('div', { class: 'freeform-meal-row' });
+  const nameI = document.createElement('input');
+  nameI.className = 'name';
+  nameI.placeholder = 'what you ate';
+  const calI = document.createElement('input');
+  calI.className = 'cal';
+  calI.type = 'number';
+  calI.placeholder = 'cal';
+  const saveBtn = el('button', {
+    onclick: () => {
+      const nm = nameI.value.trim();
+      const cl = parseInt(calI.value, 10);
+      if (!nm) { showToast('Add a name'); return; }
+      t.meals[slotId] = { id: 'custom', name: nm, cal: isNaN(cl) ? 0 : cl };
+      saveStore(); maybeCountToday(); closeMealPicker(); render();
+    }
+  }, 'save');
+  row.appendChild(nameI); row.appendChild(calI); row.appendChild(saveBtn);
+  ff.appendChild(row);
+  body.appendChild(ff);
+
+  // Clear option
+  if (chosen) {
+    const clearBtn = el('button', {
+      class: 'soft-btn',
+      style: 'margin-top:14px;',
+      onclick: () => { delete t.meals[slotId]; saveStore(); closeMealPicker(); render(); }
+    }, 'Clear this slot');
+    body.appendChild(clearBtn);
+  }
+
+  document.getElementById('modal-meal').classList.add('open');
+}
+
+function closeMealPicker() {
+  document.getElementById('modal-meal').classList.remove('open');
 }
 
 /* ============================================================
@@ -1633,15 +2516,34 @@ function renderExtras() {
   ));
   card.appendChild(el('div', { class: 'card-intro' }, 'Nothing here is a task. Open it only if it\'s useful today.'));
 
-  // Recipes
-  card.appendChild(makeFold('Dead-simple recipes', (body) => {
-    RECIPES.forEach(r => {
-      const block = el('div', { style: 'padding:10px 0;border-bottom:1px dashed var(--border-soft);' });
-      block.appendChild(el('div', { style: 'font-family:var(--serif);font-size:15.5px;color:var(--text);' },
-        r.name + ' '));
-      block.appendChild(el('span', { style: 'font-family:var(--body);font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:var(--clay);' }, r.who));
-      block.appendChild(el('div', { style: 'margin-top:3px;' }, r.body));
-      body.appendChild(block);
+  // Recipe gallery — fold per meal slot, with search links
+  card.appendChild(makeFold('Recipe library', (body) => {
+    body.appendChild(el('p', { style: 'font-style:italic;color:var(--text-mute);margin:0 0 10px;' },
+      'Real recipes, simple and postpartum-friendly. Tap a search link to find the full how-to from Sami, Kendall, or other trusted sources.'));
+    ['breakfast','lunch','dinner','snack','treat'].forEach(slotId => {
+      const slot = MEAL_SLOTS.find(s => s.id === slotId);
+      const items = MEALS[slotId] || [];
+      const hd = el('div', { style: 'font-family:var(--body);font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:var(--terracotta);margin:14px 0 8px;font-weight:600;' }, slot.label);
+      body.appendChild(hd);
+      items.forEach(r => {
+        const block = el('div', { style: 'padding:10px 0;border-bottom:1px dashed var(--border-soft);' });
+        const nameRow = el('div', { style: 'display:flex;justify-content:space-between;gap:8px;align-items:baseline;' });
+        nameRow.appendChild(el('div', { style: 'font-family:var(--serif);font-size:15px;color:var(--text);flex:1;' }, r.name));
+        if (r.cal > 0) nameRow.appendChild(el('div', { style: 'font-family:var(--body);font-size:10.5px;color:var(--text-mute);' }, '~' + r.cal + ' cal'));
+        block.appendChild(nameRow);
+        if (r.note) block.appendChild(el('div', { style: 'margin-top:3px;font-size:12.5px;' }, r.note));
+        if (r.from) {
+          const q = encodeURIComponent(r.from + ' ' + r.name);
+          const a = document.createElement('a');
+          a.href = 'https://www.google.com/search?q=' + q;
+          a.target = '_blank';
+          a.rel = 'noopener noreferrer';
+          a.style.cssText = 'display:inline-block;margin-top:6px;font-family:var(--body);font-size:10.5px;color:var(--terracotta);text-decoration:none;border-bottom:1px solid var(--border);padding-bottom:1px;';
+          a.textContent = 'find: ' + r.from + ' →';
+          block.appendChild(a);
+        }
+        body.appendChild(block);
+      });
     });
   }));
 
@@ -1663,26 +2565,6 @@ function renderExtras() {
 /* ============================================================
    SAUNA / BATH RITUAL (optional, like Max's sauna)
    ============================================================ */
-function renderRitual() {
-  if (!store.settings.sauna) return null;
-  const t = getToday();
-  const checked = !!t.checks['ritual'];
-  const card = el('div', { class: 'card' });
-  card.appendChild(el('div', { class: 'card-head' },
-    el('div', { class: 'card-head-left', html: SPRIG_SVG + '<h2 class="card-title">A small ritual</h2>' }),
-    el('div', { class: 'card-tag' }, 'for you')
-  ));
-  card.appendChild(el('div', { class: 'card-intro' }, 'Warm bath, sauna, ten quiet minutes with tea. Recovery is part of strength.'));
-  const row = el('div', { class: 'item' + (checked ? ' checked' : ''), dataset: { id: 'ritual' }, onclick: () => toggleCheck('ritual') });
-  row.appendChild(el('div', { class: 'bud' }));
-  row.appendChild(el('div', { class: 'item-main' },
-    el('div', { class: 'item-text', html: '<strong>A warm, quiet ten minutes</strong>' }),
-    el('div', { class: 'item-detail' }, 'Whenever it fits. No need to earn it.')
-  ));
-  card.appendChild(row);
-  return card;
-}
-
 /* ============================================================
    SATURDAY CHECK-IN — weight (hidden in progress), strength, feel, journal
    ============================================================ */
@@ -1822,25 +2704,37 @@ function render() {
   document.getElementById('meta-date').textContent = MONTHS[now.getMonth()] + ' ' + now.getDate();
   document.getElementById('meta-time').textContent = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
 
-  // Welcome back (after a gap) → presence → cards
+  const t = getToday();
+
+  // 1. Welcome back (after a gap)
   const wb = renderWelcomeBack();
   if (wb) content.appendChild(wb);
 
+  // 2. Sunday reflection (if applicable)
   const reflection = renderReflection();
   if (reflection) content.appendChild(reflection);
 
+  // 3. Presence (cumulative count, never goes backward)
   content.appendChild(renderPresence());
-  content.appendChild(renderFeelingCard());
-  content.appendChild(renderMovementCard());
-  content.appendChild(renderNourishCard());
-  content.appendChild(renderPermission());
 
-  const ritual = renderRitual();
-  if (ritual) content.appendChild(ritual);
+  // 4. Sleep gate FIRST — drives everything else
+  if (!t.sleep) {
+    content.appendChild(renderSleepGate());
+    content.appendChild(renderPermission());
+  } else {
+    // Sleep chosen → show status + the rest of the day
+    content.appendChild(renderSleepStatus());
+    content.appendChild(renderWorkoutCard());
+    content.appendChild(renderMealCard());
+    content.appendChild(renderFeelingCard());
+    content.appendChild(renderPermission());
+  }
 
+  // 5. Saturday check-in (separate, only Saturdays)
   const checkin = renderCheckin();
   if (checkin) content.appendChild(checkin);
 
+  // 6. Extras (recipes fold + parenting aims fold)
   content.appendChild(renderExtras());
 
   updateBar();
@@ -1865,14 +2759,14 @@ function toggleCheck(id) {
    ============================================================ */
 function updateBar() {
   const t = getToday();
-  // Count gentle "touches": window, movement, each nourish check, feel
+  // Count touches across the day's pillars
   const touched = [
-    !!t.window,
-    !!t.movement,
-    !!t.checks['n-protein'],
-    !!t.checks['n-water'],
-    !!t.checks['n-snack'],
-    !!t.checks['n-color'],
+    !!t.sleep,
+    !!t.workoutWindow,
+    !!t.workoutActivity || !!t.workoutDone,
+    !!t.meals['breakfast'],
+    !!t.meals['lunch'],
+    !!t.meals['dinner'],
   ];
   const seeds = document.getElementById('bar-seeds');
   if (seeds) {
@@ -1888,7 +2782,7 @@ function updateBar() {
     if (n === 0) txt.textContent = 'a soft start';
     else if (n <= 2) txt.textContent = 'you\'ve begun';
     else if (n <= 4) txt.textContent = 'lovely momentum';
-    else txt.textContent = 'a full, gentle day';
+    else txt.textContent = 'a full day, beautifully';
   }
 }
 
@@ -2160,9 +3054,7 @@ function closeGather() { document.getElementById('modal-gather').classList.remov
 function openSettings() { document.getElementById('modal-settings').classList.add('open'); syncSettings(); }
 function closeSettings() { document.getElementById('modal-settings').classList.remove('open'); }
 function syncSettings() {
-  document.querySelectorAll('#opt-snack button').forEach(b => b.classList.toggle('active', b.dataset.val === store.settings.snack));
   document.querySelectorAll('#opt-units button').forEach(b => b.classList.toggle('active', b.dataset.val === store.settings.units));
-  document.querySelectorAll('#opt-sauna button').forEach(b => b.classList.toggle('active', (b.dataset.val === 'on') === !!store.settings.sauna));
   document.querySelectorAll('#opt-travel button').forEach(b => b.classList.toggle('active', (b.dataset.val === 'on') === !!store.settings.travel));
 }
 
@@ -2170,14 +3062,8 @@ document.getElementById('btn-settings').addEventListener('click', openSettings);
 document.getElementById('settings-close').addEventListener('click', closeSettings);
 document.getElementById('modal-settings').addEventListener('click', e => { if (e.target.id === 'modal-settings') closeSettings(); });
 
-document.querySelectorAll('#opt-snack button').forEach(b => b.addEventListener('click', () => {
-  store.settings.snack = b.dataset.val; saveStore(); syncSettings(); render();
-}));
 document.querySelectorAll('#opt-units button').forEach(b => b.addEventListener('click', () => {
   store.settings.units = b.dataset.val; saveStore(); syncSettings();
-}));
-document.querySelectorAll('#opt-sauna button').forEach(b => b.addEventListener('click', () => {
-  store.settings.sauna = (b.dataset.val === 'on'); saveStore(); syncSettings(); render();
 }));
 document.querySelectorAll('#opt-travel button').forEach(b => b.addEventListener('click', () => {
   store.settings.travel = (b.dataset.val === 'on'); saveStore(); syncSettings(); render();
@@ -2187,7 +3073,7 @@ document.getElementById('btn-reset-today').addEventListener('click', () => {
   if (!confirm('Clear just today and begin again? Your showing-up count stays — it never goes backward.')) return;
   const k = todayKey();
   // Clearing today's actions does NOT decrement showingUpTotal (it only ever goes up)
-  store.history[k] = { window: null, movement: null, checks: {}, feel: null, note: '' };
+  store.history[k] = { sleep: null, workoutWindow: null, workoutActivity: null, workoutDone: false, meals: {}, calsManual: [], checks: {}, feel: null, note: '' };
   saveStore(); closeSettings(); render(); showToast('A fresh start for today');
 });
 document.getElementById('btn-reset-all').addEventListener('click', () => {
@@ -2210,9 +3096,12 @@ document.getElementById('btn-gather').addEventListener('click', openGather);
 document.getElementById('gather-close').addEventListener('click', closeGather);
 document.getElementById('modal-gather').addEventListener('click', e => { if (e.target.id === 'modal-gather') closeGather(); });
 
+document.getElementById('meal-close').addEventListener('click', closeMealPicker);
+document.getElementById('modal-meal').addEventListener('click', e => { if (e.target.id === 'modal-meal') closeMealPicker(); });
+
 document.addEventListener('keydown', e => {
   if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
-  if (e.key === 'Escape') { closeSettings(); closeGather(); closeBloom(); }
+  if (e.key === 'Escape') { closeSettings(); closeGather(); closeBloom(); closeMealPicker(); }
 });
 
 /* ============================================================
